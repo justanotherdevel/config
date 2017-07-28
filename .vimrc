@@ -3,19 +3,19 @@ filetype off                  " required <<========== We can turn it on later
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+"Plugin 'VundleVim/Vundle.vim'
 
 " <============================================>
 " Specify the plugins you want to install here.
 " We'll come on that later
 " <============================================>
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+"call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -52,13 +52,13 @@ set number
 "set spell
 filetype off
 au BufRead,BufNewFile *.ts   setfiletype typescript
-Plugin 'leafgarland/typescript-vim'
+"Plugin 'leafgarland/typescript-vim'
 
 "Vim emmet plugin for html/css
-Plugin 'mattn/emmet-vim'
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-let g:user_emmet_mode='a'    "enable all function in all mode.
+"Plugin 'mattn/emmet-vim'
+"let g:user_emmet_install_global = 0
+"autocmd FileType html,css EmmetInstall
+"let g:user_emmet_mode='a'    "enable all function in all mode.
 
 "Omnicomplete
 filetype plugin on
@@ -74,7 +74,7 @@ if v:progname =~? "evim"
 endif
 
 " Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
+"source $VIMRUNTIME/defaults.vim
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
