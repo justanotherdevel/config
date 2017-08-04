@@ -1,0 +1,24 @@
+[global_config]
+  borderless = True
+  title_transmit_bg_color = "#000000"
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.88
+    background_type = transparent
+    cursor_color = "#00ff00"
+    cursor_shape = ibeam
+    foreground_color = "#00ff00"
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
