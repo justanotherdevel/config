@@ -52,7 +52,7 @@ set number
 "set spell
 filetype off
 au BufRead,BufNewFile *.ts   setfiletype typescript
-Plugin 'leafgarland/typescript-vim'
+"Plugin 'leafgarland/typescript-vim'
 
 "Vim emmet plugin for html/css
 Plugin 'mattn/emmet-vim'
