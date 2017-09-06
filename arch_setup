@@ -1,0 +1,58 @@
+List of packages:
+	dmenu
+	ifplugd
+	git
+	openssh
+	xclip
+	dunst
+	conky
+	cbatticon
+	alsa-utils
+	rofi
+	xorg-xbacklight
+	gnome-screenshot
+	feh
+	At this point copy the config files after checking if something else might be required
+	vim-molokai
+	tmux
+	wget
+	youtube-dl
+	arandr
+	lxappearance
+	arc-gtk-theme
+	ttf-dejavu (or deal with messed up terminal font)
+	ttf-indic-otf (or deal with broken indian font on chrome)
+	gvim (or deal with broken system clipboard on vim)
+	noto-fonts-emoji
+	opencl-nvidia
+	ocl-icd
+	opencl-headers
+	cuda
+
+
+List of AUR packages:
+	systemd-numlockontty
+		systemctl enable numLockOnTty
+	system-san-francisco
+	font-awesome
+	whatsapp-web-desktop
+	skypeforlinux
+	spotify
+	clipit
+	albert
+	volnoti
+	vundle-vim
+	emmet-vim
+	vim-auto-pairs
+	infinality
+	moka-icon-theme
+
+List of package from source:
+	bd
+
+List of things to configure:
+	Configure the clickpad according to your taste
+	Configure backlight control. Might need to run a script
+	Configure thunar to show images and also auto mount usb drives.
+	Configure bumblebee
+
