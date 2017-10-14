@@ -8,6 +8,7 @@ make filesystem:
 	mkswap /dev/sdXx
 mount /dev/intendedRoot /mnt
 mkdir /mnt/home
+mkdir /mnt/boot
 mount /dev/intendedHome /mnt/home
 mount /dev/intendedBoot /mnt/boot
 At this point, if you want to turn on swap:

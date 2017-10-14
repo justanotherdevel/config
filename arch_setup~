@@ -28,7 +28,28 @@ List of packages:
 	ocl-icd
 	opencl-headers
 	cuda
-
+	xdotool
+	wmctrl
+	blueberry
+	pulseaudio-bluetooth
+	vlc
+	tk
+	p7zip
+	lynx
+	links
+	elinks
+	mariadb
+	tumbler: Image files. This must also be installed to expand thumbnailing capabilities to other file types
+	poppler-glib: Adobe .pdf files
+	ffmpegthumbnailer: Video files
+	freetype2: Font files
+	libgsf: .odf files
+	raw-thumbnailer: .raw files
+	totem: Video files and tagged audio files (GNOME Files, and Caja only)
+	evince or atril: .pdf files
+	gvfs-mtp: media players and mobile devices that use MTP
+	gvfs-gphoto2: digital cameras and mobile devices that use PTP
+	gvfs-afc: Apple mobile devices
 
 List of AUR packages:
 	systemd-numlockontty
@@ -49,3 +70,13 @@ List of AUR packages:
 
 List of package from source:
 	bd
+
+List of things to configure:
+	Configure the clickpad according to your taste
+	Configure backlight control. Might need to add something to xorg.conf
+	Configure thunar to show images and also auto mount usb drives.
+	Configure bumblebee
+	Configure libinput-gesture at some point
+	Configure power saving on audio drivers
+	Also configure power saving anywhere else you can
+	Configure bluetooth

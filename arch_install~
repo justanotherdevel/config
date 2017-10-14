@@ -32,6 +32,7 @@ Add this to hosts:
 Install intel-ucode and bootloader:
 	pacman -S intel-ucode parted grub efibootmgr os-prober dosfstools f2fs-tools
 	grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+	run grub-mkconfig
 Enable multilib and blackarch in pacman.conf
 Now, install sudo:
 	pacman -S sudo

@@ -145,6 +145,7 @@ assign [class="Skype"] $workSpace9
 assign [class="whats-app-nativefier-7bbd2c"] $workSpace9
 assign [class="skypeforlinux"] $workSpace9
 assign [class="Rhythmbox"] $workSpace10
+assign [class="google play music desktop player"] $workSpace10
 for_window [class="Spotify"] move to workspace $workSpace10
 
 # reload the configuration file
@@ -210,8 +211,8 @@ bar {
 	}
 }
 
-bindsym $mod+shift+x exec i3lock -ti ~/.lock.png
-bindsym $mod+shift+z exec i3lock -ti ~/.lock.png && systemctl suspend
+bindsym $mod+shift+x exec ~/.config/i3/lock.sh
+bindsym $mod+shift+z exec systemctl suspend
 hide_edge_borders both
 
 # Things to start at run
@@ -219,29 +220,38 @@ exec --no-startup-id compton -f
 #exec --no-startup-id feh --bg-scale ~/media/wallpaper/wallpaper.jpg
 exec --no-startup-id xrdb ~/.Xresources
 exec skype-electron
-exec spotify
+exec google-play-music-desktop-player
 exec ~/.config/i3/wallpaper.sh
 exec whatsapp-web-desktop
 exec --no-startup-id dunst -config /home/shashwat/.config/dunst/dunstrc
 exec --no-startup-id clipit
 exec --no-startup-id setxkbmap -layout us -option caps:swapescape 
-exec --no-startup-id cbatticon -i 'symbolic' -l 20 -r 7 -c 'systemctl hibernate' -x 'i3lock -ti ~/.lock.png'
+exec --no-startup-id cbatticon -i 'symbolic' -l 20 -r 7 -c 'systemctl suspend' -x 'i3lock -ti ~/.lock.png'
 exec --no-startup-id albert
 exec --no-startup-id volnoti
 exec --no-startup-id conky
+exec --no-startup-id numlockx on
+exec --no-startup-id libinput-gestures-setup start
+exec --no-startup-id blueberry-tray
+exec --no-startup-id thunar --daemon
+exec --no-startup-id /home/shashwat/.config/i3/lightsOn/lightsOn.sh
 
 # key-bindings
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 2%+ unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
+#bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5% && pactl set-sink-mute 0 0 && volnoti-show $(pamixer --get-volume | xargs ~/.config/i3/get_volume | head -1)"
+#bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 2%- unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 2%- unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
-bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && if amixer get Master | grep -Fq '[off]'; then volnoti-show -m; else volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1); fi"
+#bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && if amixer get Master | grep -Fq '[off]'; then volnoti-show -m; else volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1); fi"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle && if amixer get Master | grep -Fq '[off]'; then volnoti-show -m; else volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1); fi"
 bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -opacity "100" -font "System San Francisco Display 11"
 bindsym $mod+ctrl+d exec rofi -show window -lines 3 -eh 2 -opacity "100" -font "System San Francisco Display 11"
-bindsym XF86MonBrightnessUp exec ~/.config/i3/brightness.sh +5
-bindsym XF86MonBrightnessDown exec ~/.config/i3/brightness.sh -5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && volnoti-show $(xbacklight -get)
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && volnoti-show $(xbacklight -get)
 bindsym Print exec gnome-screenshot --interactive
 bindsym $mod+Tab workspace back_and_forth
 workspace_auto_back_and_forth no

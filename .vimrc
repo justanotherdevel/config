@@ -64,6 +64,27 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
+"Omnicomplete CPP
+"set nocp
+filetype plugin on
+"set tags+=/home/shashwat/.vim/tags/cpp
+"set tags+=/home/shashwat/.vim/tags/gl
+"set tags+=/home/shashwat/.vim/tags/qt4
+"set tags+=/home/shashwat/.vim/tags/sdl
+"let OmniCpp_NamespaceSearch = 1
+""let OmniCpp_GlobalScopeSearch = 1
+"let OmniCpp_ShowAccess = 1
+"let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+"let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+"let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+"let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+"let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+"map <C-F12> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
+" let g:clang_library_path='/usr/lib/clang/5.0.0/include'
+let g:ycm_server_python_interpreter='/usr/bin/python2'
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
 augroup resCur
   autocmd!
   autocmd BufReadPost * call setpos(".", getpos("'\""))
