@@ -20,3 +20,12 @@ man() {
    command man "$@"
 }
 set -o vi
+export VISUAL="vim"
+export JAVA_HOME=/usr/lib/jvm/default
+export CATALINA_HOME=/opt/apache-tomcat-8.5.23
+if [[ $TERM == xterm ]]; then
+    TERM=xterm-256color
+fi
+if [[ $TERM == screen ]]; then
+    TERM=screen-256color
+fi

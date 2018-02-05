@@ -50,6 +50,7 @@ List of packages:
 	gvfs-mtp: media players and mobile devices that use MTP
 	gvfs-gphoto2: digital cameras and mobile devices that use PTP
 	gvfs-afc: Apple mobile devices
+	pv: pipe viewer
 
 List of AUR packages:
 	systemd-numlockontty
@@ -67,6 +68,7 @@ List of AUR packages:
 	vim-auto-pairs
 	infinality
 	moka-icon-theme
+	vim-youcompleteme-git
 
 List of package from source:
 	bd
