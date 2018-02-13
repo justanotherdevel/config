@@ -153,6 +153,7 @@ assign [class="TelegramDesktop"] $workSpace9
 assign [class="skypeforlinux"] $workSpace9
 assign [class="Rhythmbox"] $workSpace10
 assign [class="google play music desktop player"] $workSpace10
+assign [class="Google Play Music Desktop Player"] $workSpace10
 for_window [class="Spotify"] move to workspace $workSpace10
 
 # reload the configuration file

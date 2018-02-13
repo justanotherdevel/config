@@ -5,7 +5,6 @@ set colorscheme jungle
 set colorscheme snow
 set colorscheme solarized
 set colorscheme default
-bulkrename 
 flat 3
 flat 4
 flat 5
@@ -31,4 +30,10 @@ mkdir
 mkdir NLP
 evince
 search sys
+wps
+wps $@
 
+open_with evince
+bu
+rename 
+bulkrename 
