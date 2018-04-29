@@ -252,15 +252,20 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 2%+ unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
+bindsym $mod+Home exec --no-startup-id "amixer set Master 2%+ unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
 #bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5% && pactl set-sink-mute 0 0 && volnoti-show $(pamixer --get-volume | xargs ~/.config/i3/get_volume | head -1)"
 #bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 2%- unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 2%- unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
+bindsym $mod+End exec --no-startup-id "amixer set Master 2%- unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
 #bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && if amixer get Master | grep -Fq '[off]'; then volnoti-show -m; else volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1); fi"
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle && if amixer get Master | grep -Fq '[off]'; then volnoti-show -m; else volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1); fi"
+bindsym $mod+ctrl+Home exec --no-startup-id "pactl set-sink-mute 0 toggle && if amixer get Master | grep -Fq '[off]'; then volnoti-show -m; else volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1); fi"
 bindsym $mod+d exec rofi -show run -theme android_notification.rasi -lines 3 -eh 2 -opacity "100" -font "System San Francisco Display 11"
 bindsym $mod+ctrl+d exec rofi -show window -lines 3 -eh 2 -opacity "100" -font "System San Francisco Display 11"
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && volnoti-show $(xbacklight -get)
+bindsym $mod+Next exec xbacklight -inc 5 && volnoti-show $(xbacklight -get)
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && volnoti-show $(xbacklight -get)
+bindsym $mod+Delete exec xbacklight -dec 5 && volnoti-show $(xbacklight -get)
 bindsym Print exec gnome-screenshot --interactive
 bindsym $mod+Tab workspace back_and_forth
 workspace_auto_back_and_forth no

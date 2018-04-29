@@ -49,6 +49,7 @@ filetype plugin indent on    " required
 colorscheme molokai
 set smartindent
 set number
+set relativenumber
 "set spell
 filetype off
 au BufRead,BufNewFile *.ts   setfiletype typescript
@@ -63,6 +64,10 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 "Omnicomplete
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+syntax on
+set title
+
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "Omnicomplete CPP
 "set nocp
@@ -93,6 +98,15 @@ augroup END
 if v:progname =~? "evim"
   finish
 endif
+
+"Backup Location
+set backupdir=~/.vim/tmp/backup//
+
+"Undo Location
+set undodir=~/.vim/tmp/undo//
+
+"Swap location
+set directory=~/.vim/tmp/swp//
 
 " Get the defaults that most users want.
 source $VIMRUNTIME/defaults.vim
@@ -141,3 +155,29 @@ endif
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 hi LineNr ctermbg=none
+
+" Linux kernel requirements
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8
+set noexpandtab
+
+"alphsubs ---------------------- {{{
+        execute "digraphs ks " . 0x2096 
+        execute "digraphs as " . 0x2090
+        execute "digraphs es " . 0x2091
+        execute "digraphs hs " . 0x2095
+        execute "digraphs is " . 0x1D62
+        execute "digraphs ks " . 0x2096
+        execute "digraphs ls " . 0x2097
+        execute "digraphs ms " . 0x2098
+        execute "digraphs ns " . 0x2099
+        execute "digraphs os " . 0x2092
+        execute "digraphs ps " . 0x209A
+        execute "digraphs rs " . 0x1D63
+        execute "digraphs ss " . 0x209B
+        execute "digraphs ts " . 0x209C
+        execute "digraphs us " . 0x1D64
+        execute "digraphs vs " . 0x1D65
+        execute "digraphs xs " . 0x2093
+"}}}

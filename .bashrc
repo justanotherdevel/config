@@ -34,3 +34,4 @@ fi
 if [[ $TERM == screen ]]; then
     TERM=screen-256color
 fi
+export GPG_TTY=$(tty)
