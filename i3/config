@@ -221,6 +221,9 @@ bar {
 
 bindsym $mod+shift+x exec ~/.config/i3/lock.sh
 bindsym $mod+shift+z exec systemctl suspend
+bindsym $mod+o exec "notify-send DUNST_COMMAND_RESUME"
+bindsym $mod+shift+o exec "notify-send DUNST_COMMAND_PAUSE"
+bindsym $mod+ctrl+k exec "setxkbmap -option caps:swapescape"
 hide_edge_borders both
 
 # Things to start at run
