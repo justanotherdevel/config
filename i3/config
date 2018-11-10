@@ -218,10 +218,10 @@ hide_edge_borders both
 exec --no-startup-id compton -f
 #exec --no-startup-id feh --bg-scale ~/media/wallpaper/wallpaper.jpg
 exec --no-startup-id xrdb ~/.Xresources
-exec skypeforlinux
+#exec skypeforlinux
 exec spotify
 exec ~/.config/i3/wallpaper.sh
-exec whatsapp-web-desktop
+#exec whatsapp-web-desktop
 exec --no-startup-id dunst -config /home/shashwat/.config/dunst/dunstrc
 exec --no-startup-id clipit
 exec --no-startup-id setxkbmap -layout us -option caps:swapescape 
