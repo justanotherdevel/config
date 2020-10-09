@@ -55,10 +55,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+j move left 20px
+bindsym $mod+Shift+k move down 20px
+bindsym $mod+Shift+l move up 20px
+bindsym $mod+Shift+semicolon move right 20px
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -90,7 +90,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 set $workSpace9 9 
 set $workSpace10 10 
@@ -139,6 +139,10 @@ bindsym $mod+Shift+ctrl+8 move container to workspace 18
 bindsym $mod+Shift+ctrl+9 move container to workspace 19
 bindsym $mod+Shift+ctrl+0 move container to workspace 20
 
+#next and prev workspace
+bindsym $mod+ctrl+Right workspace next
+bindsym $mod+ctrl+Left workspace prev
+
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
@@ -146,15 +150,17 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 #Assigning workspace to certain application
-assign [class="Skype"] $workSpace9
+#assign [class="Skype"] $workSpace9
+assign [class="whats-app-nativefier-7bbd2c"] $workSpace9
 assign [class="whats-app-nativefier-7bbd2c"] $workSpace9
 assign [class="telegram-desktop"] $workSpace9
 assign [class="TelegramDesktop"] $workSpace9
-assign [class="skypeforlinux"] $workSpace9
+#assign [class="skypeforlinux"] $workSpace9
 assign [class="Rhythmbox"] $workSpace10
 assign [class="google play music desktop player"] $workSpace10
 assign [class="Google Play Music Desktop Player"] $workSpace10
 for_window [class="Spotify"] move to workspace $workSpace10
+for_window [class="Yad"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -230,8 +236,7 @@ hide_edge_borders both
 exec --no-startup-id compton -f
 #exec --no-startup-id feh --bg-scale ~/media/wallpaper/wallpaper.jpg
 exec --no-startup-id xrdb ~/.Xresources
-exec skype-electron
-exec google-play-music-desktop-player
+exec gpmdp
 exec ~/.config/i3/wallpaper.sh
 exec whatsapp-web-desktop
 exec telegram-desktop
@@ -247,6 +252,8 @@ exec --no-startup-id libinput-gestures-setup start
 exec --no-startup-id blueberry-tray
 exec --no-startup-id thunar --daemon
 exec --no-startup-id /home/shashwat/.config/i3/lightsOn/lightsOn.sh
+exec --no-startup-id /usr/lib/kdeconnectd
+exec --no-startup-id indicator-kdeconnect
 
 # key-bindings
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -273,4 +280,19 @@ bindsym $mod+XF86AudioLowerVolume exec xbacklight -dec 5 && volnoti-show $(xback
 bindsym $mod+Delete exec xbacklight -dec 5 && volnoti-show $(xbacklight -get)
 bindsym Print exec gnome-screenshot --interactive
 bindsym $mod+Tab workspace back_and_forth
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 workspace_auto_back_and_forth no
+
+# Marks
+# read 1 character and mark the current window with this character
+bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+
+# read 1 character and go to the window with the character
+bindsym $mod+g exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+
+# read 1 character and swap the window with the character
+bindsym $mod+Shift+s exec i3-input -F 'swap container with mark %s' -l 1 -P 'Swap: '
+
+# i3-input
+bindsym $mod+i exec i3-input

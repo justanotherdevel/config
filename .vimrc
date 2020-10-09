@@ -9,7 +9,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'tomasr/molokai'
+Plugin 'mzlogin/vim-smali'
+Plugin 'davidhalter/jedi-vim'
 " <============================================>
 " Specify the plugins you want to install here.
 " We'll come on that later
@@ -56,10 +58,9 @@ au BufRead,BufNewFile *.ts   setfiletype typescript
 "Plugin 'leafgarland/typescript-vim'
 
 "Vim emmet plugin for html/css
-Plugin 'mattn/emmet-vim'
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-let g:user_emmet_mode='a'    "enable all function in all mode.
+"let g:user_emmet_install_global = 0
+"autocmd FileType html,css EmmetInstall
+"let g:user_emmet_mode='a'    "enable all function in all mode.
 
 "Omnicomplete
 filetype plugin on
@@ -69,35 +70,6 @@ set title
 
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-"Omnicomplete CPP
-"set nocp
-filetype plugin on
-"set tags+=/home/shashwat/.vim/tags/cpp
-"set tags+=/home/shashwat/.vim/tags/gl
-"set tags+=/home/shashwat/.vim/tags/qt4
-"set tags+=/home/shashwat/.vim/tags/sdl
-"let OmniCpp_NamespaceSearch = 1
-""let OmniCpp_GlobalScopeSearch = 1
-"let OmniCpp_ShowAccess = 1
-"let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-"let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-"let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-"let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-"let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-"map <C-F12> :!ctags -R --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
-" let g:clang_library_path='/usr/lib/clang/5.0.0/include'
-let g:ycm_server_python_interpreter='/usr/bin/python2'
-" automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest,preview
-augroup resCur
-  autocmd!
-  autocmd BufReadPost * call setpos(".", getpos("'\""))
-augroup END
-
-if v:progname =~? "evim"
-  finish
-endif
 
 "Backup Location
 set backupdir=~/.vim/tmp/backup//
@@ -156,11 +128,17 @@ hi Normal ctermbg=none
 hi NonText ctermbg=none
 hi LineNr ctermbg=none
 
+"Default settings
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
 " Linux kernel requirements
-set tabstop=8
-set softtabstop=8
-set shiftwidth=8
-set noexpandtab
+" set tabstop=8
+" set softtabstop=8
+" set shiftwidth=8
+" set noexpandtab
 
 "alphsubs ---------------------- {{{
         execute "digraphs ks " . 0x2096 
@@ -181,3 +159,8 @@ set noexpandtab
         execute "digraphs vs " . 0x1D65
         execute "digraphs xs " . 0x2093
 "}}}
+
+"Boost Library Setup
+augroup Boost
+	au BufRead,BufEnter /home/shashwat/Programs/boost/* set tabstop=4 expandtab softtabstop=4 shiftwidth=4
+augroup end
