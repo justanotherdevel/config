@@ -1,0 +1,48 @@
+partition the disk:
+	root 100G
+	home 220G
+	swap 24G (but not in use for now, only for future purpose as it can damage SSD)
+timedatectl set-ntp true
+make filesystem:
+	mkfs.f2fs -l mylabel /dev/sdXx
+	mkswap /dev/sdXx
+mount /dev/intendedRoot /mnt
+mkdir /mnt/home
+mkdir /mnt/boot
+mount /dev/intendedHome /mnt/home
+mount /dev/intendedBoot /mnt/boot
+At this point, if you want to turn on swap:
+	swapon /dev/intendedSwap
+Install required stuff:
+	pacstrap /mnt base base-devel bumblebee mesa nvidia xf86-video-intel dialog wpa_supplicant iw vim
+Generate fstab:
+	genfstab -U /mnt >> /mnt/etc/fstab
+Chroot:
+	arch-chroot /mnt
+Time zone:
+	ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+Hardware Clock:
+	hwclock --systohc
+Edit locale:
+	locale-gen
+	in /etc/locale.conf
+	LANG=locale
+Create hostname in /etc/hostname
+Add this to hosts:
+	127.0.1.1	myhostname.localdomain	myhostname
+Install intel-ucode and bootloader:
+	pacman -S intel-ucode parted grub efibootmgr os-prober dosfstools f2fs-tools
+	grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+	run grub-mkconfig
+Enable multilib and blackarch in pacman.conf
+Now, install sudo:
+	pacman -S sudo
+Add a new regular user and add it to the wheel group (maybe storage and power too)
+	set password for that user
+Grant wheel sudo access
+Install i3, xorg-xinit, dmenu, terminator, thunar, ranger, yaourt, 
+yaourt google-chrome
+Add exec i3 to Xinitrc
+su
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist

@@ -9,7 +9,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'tomasr/molokai'
+Plugin 'mzlogin/vim-smali'
+Plugin 'davidhalter/jedi-vim'
 " <============================================>
 " Specify the plugins you want to install here.
 " We'll come on that later
@@ -49,29 +51,34 @@ filetype plugin indent on    " required
 colorscheme molokai
 set smartindent
 set number
+set relativenumber
 "set spell
 filetype off
 au BufRead,BufNewFile *.ts   setfiletype typescript
-Plugin 'leafgarland/typescript-vim'
+"Plugin 'leafgarland/typescript-vim'
 
 "Vim emmet plugin for html/css
-Plugin 'mattn/emmet-vim'
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-let g:user_emmet_mode='a'    "enable all function in all mode.
+"let g:user_emmet_install_global = 0
+"autocmd FileType html,css EmmetInstall
+"let g:user_emmet_mode='a'    "enable all function in all mode.
 
 "Omnicomplete
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+syntax on
+set title
 
-augroup resCur
-  autocmd!
-  autocmd BufReadPost * call setpos(".", getpos("'\""))
-augroup END
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-if v:progname =~? "evim"
-  finish
-endif
+
+"Backup Location
+set backupdir=~/.vim/tmp/backup//
+
+"Undo Location
+set undodir=~/.vim/tmp/undo//
+
+"Swap location
+set directory=~/.vim/tmp/swp//
 
 " Get the defaults that most users want.
 source $VIMRUNTIME/defaults.vim
@@ -120,3 +127,40 @@ endif
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 hi LineNr ctermbg=none
+
+"Default settings
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+" Linux kernel requirements
+" set tabstop=8
+" set softtabstop=8
+" set shiftwidth=8
+" set noexpandtab
+
+"alphsubs ---------------------- {{{
+        execute "digraphs ks " . 0x2096 
+        execute "digraphs as " . 0x2090
+        execute "digraphs es " . 0x2091
+        execute "digraphs hs " . 0x2095
+        execute "digraphs is " . 0x1D62
+        execute "digraphs ks " . 0x2096
+        execute "digraphs ls " . 0x2097
+        execute "digraphs ms " . 0x2098
+        execute "digraphs ns " . 0x2099
+        execute "digraphs os " . 0x2092
+        execute "digraphs ps " . 0x209A
+        execute "digraphs rs " . 0x1D63
+        execute "digraphs ss " . 0x209B
+        execute "digraphs ts " . 0x209C
+        execute "digraphs us " . 0x1D64
+        execute "digraphs vs " . 0x1D65
+        execute "digraphs xs " . 0x2093
+"}}}
+
+"Boost Library Setup
+augroup Boost
+	au BufRead,BufEnter /home/shashwat/Programs/boost/* set tabstop=4 expandtab softtabstop=4 shiftwidth=4
+augroup end
