@@ -76,7 +76,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+Shift+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -188,6 +188,12 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
+        # Minute control
+        bindsym Shift+j resize shrink width 1 px or 1 ppt
+        bindsym Shift+k resize grow height 1 px or 1 ppt
+        bindsym Shift+l resize shrink height 1 px or 1 ppt
+        bindsym Shift+semicolon resize grow width 1 px or 1 ppt
+        
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -233,7 +239,7 @@ bindsym $mod+ctrl+k exec "setxkbmap -option caps:swapescape"
 hide_edge_borders both
 
 # Things to start at run
-exec --no-startup-id compton -f
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 #exec --no-startup-id feh --bg-scale ~/media/wallpaper/wallpaper.jpg
 exec --no-startup-id xrdb ~/.Xresources
 exec gpmdp
@@ -292,7 +298,7 @@ bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
 bindsym $mod+g exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
 
 # read 1 character and swap the window with the character
-bindsym $mod+Shift+s exec i3-input -F 'swap container with mark %s' -l 1 -P 'Swap: '
+bindsym $mod+s exec i3-input -F 'swap container with mark %s' -l 1 -P 'Swap: '
 
 # i3-input
 bindsym $mod+i exec i3-input

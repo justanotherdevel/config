@@ -85,6 +85,10 @@ set foldlevel=2
 let mapleader = "\<space>"
 map <leader>/ :noh<CR>
 
+"Fast buffer
+map <leader>n :bn<CR>
+map <leader>p :bp<CR>
+
 "NerdTree
 map <leader>N :NERDTreeToggle<CR>
 nnoremap <C-h> <C-w><C-h>
@@ -393,7 +397,24 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+let g:lightline = {
+    \ 'colorscheme': 'molokai',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'cocstatus', 'readonly', 'filename', 'modified', 'git', 'ctrlpmark', 'method' ] ],
+    \   'right':[ ['filetype', 'fileencoding', 'lineinfo', 'percent'],
+    \             ['blame']]
+    \ },
+    \ 'component_function': {
+    \   'cocstatus': 'coc#status',
+    \   'blame': 'LightlineGitBlame',
+    \ },
+    \ }
+
+" Use auocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " Mappings for CoCList
 " Show all diagnostics.
