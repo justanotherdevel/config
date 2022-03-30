@@ -9,7 +9,7 @@ call plug#begin('~/.config/nvim/plugged')
 " let Vundle manage Vundle, required
 Plug 'tomasr/molokai'
 Plug 'mzlogin/vim-smali'
-Plug 'ap/vim-css-color'
+Plug 'lilydjwg/colorizer'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
 Plug 'francoiscabrol/ranger.vim'
@@ -21,6 +21,21 @@ Plug 'tpope/vim-commentary'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'SirVer/ultisnips'
+Plug 'mlaursen/vim-react-snippets'
+Plug 'luochen1990/rainbow'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'thiagoalessio/rainbow_levels.vim'
+Plug 'valloric/MatchTagAlways'
+Plug 'tpope/vim-surround'
+Plug 'preservim/tagbar'
+Plug 'https://github.com/yegappan/taglist'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'ryanoasis/vim-devicons'
+" Plug 'rmagatti/auto-session'
 " <============================================>
 " Specify the plugins you want to install here.
 " We'll come on that later
@@ -69,6 +84,78 @@ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
 filetype off
 au BufRead,BufNewFile *.ts   setfiletype typescript
 "Plugin 'leafgarland/typescript-vim'
+"vim-jsx-pretty
+let g:vim_jsx_pretty_colorful_config = 0
+
+" nvim stuff
+if !has('nvim')
+    set viminfo+=~/.vim/viminfo
+endif
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+"Vim Rainbow Level
+" Or automatically turning it on for certain file types:
+autocmd Filetype * call rainbow_levels#off()
+hi! RainbowLevel0 ctermfg=240 guifg=#339009 ctermbg=none guibg=none
+hi! RainbowLevel1 ctermfg=239 guifg=#9e0059 ctermbg=none guibg=none
+hi! RainbowLevel2 ctermfg=238 guifg=#ff0054 ctermbg=none guibg=none
+hi! RainbowLevel3 ctermfg=237 guifg=#59ffa0 ctermbg=none guibg=none
+hi! RainbowLevel4 ctermfg=236 guifg=#ffbd00 ctermbg=none guibg=none
+hi! RainbowLevel5 ctermfg=235 guifg=#ff5440 ctermbg=none guibg=none
+hi! RainbowLevel6 ctermfg=234 guifg=#ccff33 ctermbg=none guibg=none
+hi! RainbowLevel7 ctermfg=233 guifg=#979dac ctermbg=none guibg=none
+hi! RainbowLevel8 ctermfg=232 guifg=#fed9b7 ctermbg=none guibg=none
+"Enable vim rainbow
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\	'guifgs': ['royalblue3', '#ff0054', 'seagreen3', '#ff5400','#ffbd00','firebrick'],
+\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\	'guis': [''],
+\	'cterms': [''],
+\	'operators': '_,_',
+\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\	'separately': {
+\       '*': {},
+\		'xml': {
+\			'syn_name_prefix': 'xmlRainbow',
+\			'parentheses': ['start=/\v\<\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'xhtml': {
+\			'parentheses': ['start=/\v\<\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'html': {
+\			'parentheses': ['start=/\v\<((script|style|area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'markdown': {
+\			'parentheses_options': 'containedin=markdownCode contained', 
+\		},
+\		'lisp': {
+\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'], 
+\		},
+\		'haskell': {
+\			'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'], 
+\		},
+\		'vim': {
+\			'parentheses_options': 'containedin=vimFuncBody', 
+\		},
+\		'perl': {
+\			'syn_name_prefix': 'perlBlockFoldRainbow', 
+\		},
+\		'stylus': {
+\			'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'], 
+\		},
+\		'css': 0, 
+\	}
+\}
 
 "Vim emmet plugin for html/css
 "let g:user_emmet_install_global = 0
@@ -85,11 +172,44 @@ set foldlevel=2
 let mapleader = "\<space>"
 map <leader>/ :noh<CR>
 
+" HTML tag match
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'javascript' : 1,
+    \ 'javascriptreact': 1,
+    \}
+nmap <leader>% :MtaJumpToOtherTag<cr>
+
+
+" Rainbow Keymapping
+nmap <leader>tR :RainbowToggle<cr>
+
+" Tagbar
+nmap <leader>tb :TagbarToggle<cr>
+
+" Indent guide
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+
+"Vim Rainbow Levels
+" Creating a mapping to turn it on and off:
+map <leader>tr :RainbowLevelsToggle<cr>
+
 "Fast buffer
 map <leader>n :bn<CR>
 map <leader>p :bp<CR>
+nmap <leader>gB :ls<CR>:b<Space>
+nmap <leader>gt <c-^>
 
 "NerdTree
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
+autocmd TabNew * NERDTree
+autocmd TabNew * wincmd p
+" autocmd InsertLeave * :CocCommand prettier.formatFile
 map <leader>N :NERDTreeToggle<CR>
 nnoremap <C-h> <C-w><C-h>
 nnoremap <C-j> <C-w><C-j>
@@ -98,7 +218,7 @@ nnoremap <C-l> <C-w><C-l>
 
 "Ranger
 let g:NERDTreeHijackNetrw = 0  "add this line if you use NERDTree
-let g:ranger_replace_netrw = 1 "open ranger when vim open a directory
+let g:ranger_replace_netrw = 0 "open ranger when vim open a directory
 
 "Some other mapping
 map <Up>    <C-W>-
@@ -111,10 +231,10 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>CD :cd %:p:h<cr>:pwd<cr>
 
-map [[ ?{<CR>w99[{
-map ][ /}<CR>b99]}
-map ]] j0[[%/{<CR>
-map [] k$][%?}<CR>
+map [[ ?{<CR>w99[{:noh<CR>
+map ][ /}<CR>b99]}:noh<CR>
+map ]] j0[[%/{<CR>:noh<CR>
+map [] k$][%?}<CR>:noh<CR>
 "Open_file_cursor
 nnoremap <leader>F :call GotoFile("new")<CR>
 
@@ -128,13 +248,13 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 
 "Backup Location
-set backupdir=~/.vim/tmp/backup//
+set backupdir=~/.nvim/tmp/backup//
 
 "Undo Location
-set undodir=~/.vim/tmp/undo//
+set undodir=~/.nvim/tmp/undo//
 
 "Swap location
-set directory=~/.vim/tmp/swp//
+set directory=~/.nvim/tmp/swp//
 
 " Get the defaults that most users want.
 
@@ -181,7 +301,13 @@ endif
 " settings of molokai theme
 hi Normal ctermbg=none
 hi NonText ctermbg=none
-hi LineNr ctermbg=none
+hi LineNr ctermbg=none 
+
+"Some changes to theme overriding molokai
+hi Directory guifg=#e63946
+hi Function guifg=#e63946
+hi PreCondit guifg=#ffd166
+hi PreProc guifg=#ffd166
 
 "Default settings
 set tabstop=4
@@ -220,8 +346,19 @@ augroup Boost
 	au BufRead,BufEnter /home/shashwat/Programs/boost/* set tabstop=4 expandtab softtabstop=4 shiftwidth=4
 augroup end
 
+" Javascript  Setup
+augroup twig_ft
+  au!
+  autocmd BufNewFile,BufRead *.js   set filetype=javascriptreact
+  autocmd BufNewFile,BufRead *.jsx   set filetype=javascriptreact
+augroup END
+
 " Dart indentation settings
 autocmd FileType dart setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
+"js indentation settings
+autocmd FileType *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FileType *.jsx setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 "Jump to last known cursor position
 if 1
@@ -249,6 +386,11 @@ if 1
   augroup END
 
 endif
+
+"  ================================================================
+" UltiSnips
+" ================================================================
+let g:UltiSnipsExpandTrigger='<c-space>'    
 
 "CoC
 " TextEdit might fail if hidden is not set.
@@ -308,7 +450,7 @@ else
 endif
 
 let g:coc_user_config = {}
-let g:coc_user_config['coc.preferences.jumpCommand'] = 'vsp'
+" let g:coc_user_config['coc.preferences.jumpCommand'] = 'vsp'
 
 " coc-highlight
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -323,6 +465,9 @@ nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
 
+" Colorizer
+nmap <leader>tC <Plug>Colorizer
+
 
 " Use K to show documentation in preview window.
 nnoremap <silent> <leader>K :call <SID>show_documentation()<CR>
@@ -335,6 +480,20 @@ function! s:show_documentation()
   endif
 endfunction
 
+function! ShowDocIfNoDiagnostic(timer_id)
+  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+    silent call CocActionAsync('doHover')
+  endif
+endfunction
+
+function! s:show_hover_doc()
+  call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
+
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
+
+
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -344,12 +503,16 @@ nmap <leader>rn <Plug>(coc-rename)
 " Run flutter specific commands
 nmap <leader>fc :CocList --input=flutter commands<cr>
 
+" Run javascript specific commands
+nmap <leader>jc :CocList --input=tsserver commands<cr>
+
 " Run formatting fix on save
 let g:dart_format_on_save=1
 
 " Formatting selected code.
-xmap <leader>ff  <Plug>(coc-format-selected)
-nmap <leader>ff  <Plug>(coc-format-selected)
+xmap <leader>fF  <Plug>(coc-format-selected)
+nmap <leader>fF  <Plug>(coc-format-selected)
+nmap <leader>ff :CocCommand prettier.formatFile<cr>
 
 augroup mygroup
   autocmd!
@@ -361,11 +524,14 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <leader>A  <Plug>(coc-codeaction-selected)
+nmap <leader>A  <Plug>(coc-codeaction-selected)
+
+xmap <leader>a  <Plug>(coc-codeaction-cursor)
+nmap <leader>a  <Plug>(coc-codeaction-cursor)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>Ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -403,7 +569,7 @@ let g:lightline = {
     \ 'colorscheme': 'molokai',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'cocstatus', 'readonly', 'filename', 'modified', 'git', 'ctrlpmark', 'method' ] ],
+    \             [ 'cocstatus', 'readonly', 'filename', 'relativepath','modified', 'git', 'ctrlpmark', 'method' ] ],
     \   'right':[ ['filetype', 'fileencoding', 'lineinfo', 'percent'],
     \             ['blame']]
     \ },
@@ -449,11 +615,11 @@ let g:coc_snippet_prev = '<c-k>'
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? coc#_select_confirm() :
-"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
+ inoremap <silent><expr> <C-j>
+       \ pumvisible() ? coc#_select_confirm() :
+       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+       \ <SID>check_back_space() ? "\<TAB>" :
+       \ coc#refresh()
 
 " function! s:check_back_space() abort
 "   let col = col('.') - 1
@@ -461,3 +627,118 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " endfunction
 
 " let g:coc_snippet_next = '<tab>'
+"
+" Adding FZF
+nnoremap <leader>s :FZF<cr>
+
+
+let g:fzf_command_prefix = 'Fzf'
+let g:fzf_buffers_jump = 1      " [Buffers] to existing split
+
+function! s:build_location_list(lines) abort
+    call setloclist(0, map(copy(a:lines), '{ "filename": v:val }'))
+    lopen
+endfunction
+
+function! s:build_quickfix_list(lines) abort
+    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+    copen
+endfunction
+
+" An action can be a reference to a function that processes selected lines
+let g:fzf_action = {
+            \ 'ctrl-l': function('s:build_quickfix_list'),
+            \ 'ctrl-r': function('s:build_location_list'),
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit'}
+" \ 'ctrl-o': '<S-tab>',
+" \ 'ctrl-i': 'insert_match',
+
+" function! s:insert_match(lines) abort
+"   <c-r>=echo('a:lines')<cr>
+" endfunction
+
+nnoremap <leader><c-f> :FzfFiles $HOME<cr>
+nnoremap <leader>gf :FzfFiles .<cr>
+nnoremap <leader>gF :FzfFiles /<cr>
+nnoremap <leader>gb :FzfBuffers<cr>
+nnoremap <leader>gFw :FzfWindows<cr>
+nnoremap <leader>gFt :FzfTags<cr>
+nnoremap <leader>gF<c-t> :FzfBTags<cr>
+nnoremap <leader>gFc :FzfCommit<cr>
+nnoremap <leader>gF<c-c> :FzfBCommit<cr>
+nnoremap <leader>gFg :FzfGFiles?<cr>
+nnoremap <leader>gF<c-g> :FzfGFiles<cr>
+nnoremap <leader>gL :FzfLines<cr>
+nnoremap <leader>gl :FzfBLines<cr>
+nnoremap <leader>gF; :FzfHistory:<cr>
+nnoremap <leader>gF/ :FzfHistory/<cr>
+nnoremap <leader>gFh :FzfHistory<cr>
+nnoremap <leader>gFm :FzfHelptags<cr>
+nnoremap <leader>gFs <esc>:FzfSnippets<cr>
+nnoremap <leader>gFr <esc>:Rg<cr>
+inoremap <c-x><c-s> <c-o>:FzfSnippets<cr>
+
+" Terminal
+tnoremap <C-w> <C-\><C-n>
+nmap <leader>tt <Plug>(coc-terminal-toggle)
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+let g:fzf_tags_command = 'ctags -R'
+" Border color
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'rounded' } }
+
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --bind "ctrl-o:toggle+up,ctrl-space:toggle-preview"'
+let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
+"-g '!{node_modules,.git}'
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+    \ 'bg':      ['bg', 'Normal'],
+    \ 'gutter':  ['bg', 'Normal'],
+    \ 'hl':      ['fg', 'Comment'],
+    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    \ 'bg+':     ['bg', 'Visual', 'CursorColumn'],
+    \ 'hl+':     ['fg', 'Statement'],
+    \ 'info':    ['fg', 'PreProc'],
+    \ 'border':  ['fg', 'vertsplit'],
+    \ 'prompt':  ['fg', 'Conditional'],
+    \ 'pointer': ['fg', 'Exception'],
+    \ 'marker':  ['fg', 'Keyword'],
+    \ 'spinner': ['fg', 'Label'],
+    \ 'header':  ['fg', 'Comment'] }
+    " \ 'border':  ['fg', 'Conditional'],
+
+"Get Files
+command! -bang -nargs=? -complete=dir Files
+        \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+" Get text in files with Rg
+command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   "rg --column --line-number --no-heading --color=always --smart-case --glob '!.git/**' ".shellescape(<q-args>), 1,
+    \   fzf#vim#with_preview(), <bang>0)
+
+" Ripgrep advanced
+function! RipgrepFzf(query, fullscreen) abort
+    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+    let initial_command = printf(command_fmt, shellescape(a:query))
+    let reload_command = printf(command_fmt, '{q}')
+    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+" Git grep
+command! -bang -nargs=* GGrep
+    \ call fzf#vim#grep(
+    \   'git grep --line-number '.shellescape(<q-args>), 0,
+    \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)

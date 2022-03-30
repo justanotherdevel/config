@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <inkscape
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   version="1"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   version="1">
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">
   <group
      id="window">
     <group
@@ -110,11 +110,14 @@
     <sodipodi:namedview
        id="base"
        pagecolor="#ffffff"
+       pageopacity="0.0"
+       pagecheckerboard="0"
        bordercolor="#666666"
        borderopacity="1.0"
        objecttolerance="10.0"
        gridtolerance="10.0"
        guidetolerance="10.0"
+       pageshadow="2"
        inkscape:pageopacity="0.0"
        inkscape:pageshadow="2"
        inkscape:window-width="640"
@@ -132,15 +135,15 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="1127.36"
-         height="821.767"
+         width="329.739"
+         height="185.704"
          rx="0"
          ry="0" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
          usecurrent="1"
-         persp="perspective40">
+         persp="perspective900">
         <side
            id="XYfront"
            style="fill:#8686bf;stroke:none;stroke-linejoin:round;"
@@ -169,12 +172,13 @@
       <eventcontext
          id="arc"
          style="fill:red;"
-         end="180.251"
+         end="359.939"
          start="0"
          usecurrent="1"
-         rx="183.981"
-         ry="151.1"
-         open="1" />
+         rx="76.777"
+         ry="74.9261"
+         open="1"
+         arc_type="1" />
       <eventcontext
          id="star"
          magnitude="5"
@@ -200,7 +204,8 @@
          selcue="1"
          style="stroke-width:1px;"
          usecurrent="0"
-         average_all_sketches="1" />
+         average_all_sketches="1"
+         pressure="0" />
       <eventcontext
          id="pen"
          mode="drag"
@@ -222,6 +227,8 @@
        usepressure="1"
        usetilt="0"
        keep_selected="1"
+       abs_width="1"
+       unit="mm"
        tremor="0"
        wiggle="0">
       <group
@@ -336,6 +343,7 @@
        gradientdrag="1"
        font_sample="AaBbCcIiPpQq12369$€¢?.;/()"
        show_sample_in_list="1"
+       use_svg2="1"
        style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px"
        selcue="1"
        align_mode="3"
@@ -348,7 +356,6 @@
        id="nodes"
        selcue="1"
        gradientdrag="1"
-       highlight_color="4278190335"
        pathflash_enabled="1"
        pathflash_unselected="0"
        pathflash_timeout="500"
@@ -360,10 +367,11 @@
        live_outline="1"
        live_objects="1"
        show_helperpath="0"
-       x="0"
-       y="0"
+       x="195.491"
+       y="318.58"
        edit_clipping_paths="0"
-       edit_masks="0" />
+       edit_masks="0"
+       highlight_color="4278190335" />
     <eventcontext
        id="tweak"
        selcue="0"
@@ -556,7 +564,7 @@
   </group>
   <group
      id="colorselector"
-     page="3" />
+     page="4" />
   <group
      id="embedded">
     <group
@@ -579,14 +587,14 @@
        panel_mode="1"
        panel_wrap="0"
        panel_border="0"
-       page="0"
+       page="2"
        x="0"
        y="0"
-       w="654"
-       h="395"
+       w="358"
+       h="390"
        visible="1"
        state="2"
-       placement="2" />
+       placement="1" />
     <group
        id="filtereffects" />
     <group
@@ -610,15 +618,17 @@
        state="2"
        placement="1" />
     <group
-       id="xml" />
+       id="xml"
+       h="500"
+       w="300" />
     <group
        id="find" />
     <group
        id="spellcheck"
        w="200"
        h="250"
-       lang="en_US"
-       ignorenumbers="1" />
+       ignorenumbers="1"
+       lang="en_US" />
     <group
        id="documentoptions"
        state="2"
@@ -629,9 +639,9 @@
        panel_border="0"
        x="0"
        y="0"
-       w="652"
-       h="622"
-       visible="1"
+       w="708"
+       h="601"
+       visible="0"
        placement="5" />
     <group
        id="preferences"
@@ -642,10 +652,12 @@
        panel_wrap="0"
        panel_border="0"
        x="694"
-       y="429"
+       y="431"
        w="532"
        h="263"
-       page="7" />
+       page="9"
+       visible="0"
+       placement="1" />
     <group
        id="gradienteditor" />
     <group
@@ -674,14 +686,14 @@
        panel_border="0"
        x="0"
        y="0"
-       w="652"
-       h="622"
-       visible="1"
+       w="454"
+       h="494"
+       visible="0"
        state="2"
        placement="5">
       <group
          id="exportarea"
-         value="drawing" />
+         value="selection" />
       <group
          id="defaultxdpi" />
     </group>
@@ -690,7 +702,7 @@
        default="org.inkscape.output.svg.inkscape"
        append_extension="1"
        enable_preview="1"
-       path=""
+       path="/home/shashwat/Documents/Graphics"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -701,12 +713,13 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/shashwat/Documents/CIC/ArtAndDesign/" />
+       path="/home/shashwat/Documents/Graphics/" />
     <group
        id="import"
        enable_preview="1"
        path="/home/shashwat/Documents/CIC/ArtAndDesign/InkScapeLibrary/"
        ask="1"
+       ask_svg="1"
        link="link"
        scale="optimizeSpeed" />
     <group
@@ -735,6 +748,8 @@
     <group
        id="layers"
        maxDepth="20"
+       w="742"
+       h="601"
        panel_size="1"
        panel_ratio="100"
        panel_mode="1"
@@ -742,9 +757,7 @@
        panel_border="0"
        x="0"
        y="0"
-       w="652"
-       h="622"
-       visible="1"
+       visible="0"
        state="2"
        placement="5" />
     <group
@@ -1056,10 +1069,10 @@
          origin_y="0.0"
          spacing_x="1.0"
          spacing_y="1.0"
-         color="1061158688"
-         empcolor="1061158720"
          empspacing="5"
-         dotted="0" />
+         dotted="0"
+         color="1061158688"
+         empcolor="1061158720" />
       <group
          id="axonom"
          units="mm"
@@ -1068,9 +1081,9 @@
          spacing_y="1.0"
          angle_x="30.0"
          angle_z="30.0"
+         empspacing="5"
          color="1061158688"
-         empcolor="1061158720"
-         empspacing="5" />
+         empcolor="1061158720" />
     </group>
     <group
        id="workarounds"
@@ -1078,20 +1091,36 @@
        partialdynamic="0" />
     <group
        id="rendering" />
+    <group
+       id="svgeditor"
+       value="inkscape" />
+    <group
+       id="dash"
+       scale="1" />
+    <group
+       id="middlemousezoom"
+       value="1" />
+    <group
+       id="boot"
+       theme="colorful">
+      <group
+         id="shown"
+         ver1.1.1="1" />
+    </group>
   </group>
   <group
      id="extensions" />
   <group
      id="desktop"
-     style="line-height:1.25;font-size:133.33333333px;text-anchor:start;text-align:justify;fill:#00ff93;stroke:#ffffff;stroke-opacity:1;stroke-width:11.33858268;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1">
+     style="line-height:1.25;font-size:133.33333333px;text-align:justify;fill:#ffffff;stroke:#0007ff;stroke-width:12.71811024">
     <group
        width="1920"
        height="1038"
        x="0"
        y="42"
+       maximized="1"
        fullscreen="0"
-       id="geometry"
-       maximized="0" />
+       id="geometry" />
     <group
        id="XYfront" />
     <group
@@ -1188,4 +1217,27 @@
   <group
      id="ui"
      language="" />
+  <group
+     id="theme"
+     defaultTheme="Arc-Dark"
+     defaultIconTheme="Moka"
+     gtkTheme="Adwaita"
+     menuIcons_canvas="0"
+     menuIcons_layers="0"
+     menuIcons_objects="0"
+     defaultPreferDarkTheme="0"
+     defaultGtkTheme="Arc-Dark"
+     preferDarkTheme="1"
+     darkTheme="1"
+     iconTheme="multicolor"
+     symbolicIcons="1"
+     symbolicDefaultBaseColors="0"
+     symbolicDefaultHighColors="0">
+    <group
+       id="multicolor"
+       symbolicBaseColor="3958107135"
+       symbolicSuccessColor="10029823"
+       symbolicWarningColor="4279865599"
+       symbolicErrorColor="10086143" />
+  </group>
 </inkscape>

@@ -93,6 +93,9 @@ path+=("/home/shashwat/.gem/ruby/2.6.0/bin")
 # Lammps
 path+=("/home/shashwat/Documents/CIC/electronics/GasBarrierNanofoam/lammps/lammps-7Aug19/build")
 
+# AppImage
+path+=("/home/shashwat/AppImage/")
+
 # Cursor Mode
 
 cursor_mode() {

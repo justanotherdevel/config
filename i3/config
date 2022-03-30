@@ -233,8 +233,11 @@ bar {
 
 bindsym $mod+shift+x exec ~/.config/i3/lock.sh
 bindsym $mod+shift+z exec systemctl suspend
-bindsym $mod+o exec "notify-send DUNST_COMMAND_RESUME"
-bindsym $mod+shift+o exec "notify-send DUNST_COMMAND_PAUSE"
+bindsym $mod+o exec "dunstctl set-paused false"
+bindsym $mod+shift+o exec "dunstctl set-paused true"
+bindsym ctrl+mod1+space exec "dunstctl close"
+bindsym ctrl+mod1+shift+space exec "dunstctl close-all"
+bindsym ctrl+mod1+grave exec "dunstctl history-pop"
 bindsym $mod+ctrl+k exec "setxkbmap -option caps:swapescape"
 hide_edge_borders both
 
@@ -260,13 +263,19 @@ exec --no-startup-id thunar --daemon
 exec --no-startup-id /home/shashwat/.config/i3/lightsOn/lightsOn.sh
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id indicator-kdeconnect
+exec --no-startup-id signal-desktop
 
 # key-bindings
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioPlay exec playerctl -p spotify play-pause
+bindsym XF86AudioPause exec playerctl -p spotify play-pause
+bindsym XF86AudioNext exec playerctl -p spotify next
+bindsym XF86AudioPrev exec playerctl -p spotify previous
+bindsym XF86AudioStop exec playerctl -p spotify stop
+bindsym $mod+XF86AudioPlay exec playerctl play-pause
+bindsym $mod+XF86AudioPause exec playerctl play-pause
+bindsym $mod+XF86AudioNext exec playerctl next
+bindsym $mod+XF86AudioPrev exec playerctl previous
+bindsym $mod+XF86AudioStop exec playerctl stop
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 2%+ unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
 bindsym $mod+Home exec --no-startup-id "amixer set Master 2%+ unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
 #bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5% && pactl set-sink-mute 0 0 && volnoti-show $(pamixer --get-volume | xargs ~/.config/i3/get_volume | head -1)"
