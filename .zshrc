@@ -1,13 +1,16 @@
 # The following lines were added by compinstall
-cd $HOME
+prompt off
+# cd $HOME
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :compinstall filename '/home/shashwat/.zshrc'
 
 autoload -Uz compinit
 compinit
 
-autoload -Uz promptinit
-promptinit
+# autoload -Uz promptinit
+# promptinit
+
+
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
 ttyctl -f
@@ -96,6 +99,8 @@ path+=("/home/shashwat/Documents/CIC/electronics/GasBarrierNanofoam/lammps/lammp
 # AppImage
 path+=("/home/shashwat/AppImage/")
 
+path+=("/home/shashwat/.local/bin")
+
 # Cursor Mode
 
 cursor_mode() {
@@ -136,7 +141,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 
 # autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 
-bindkey '^[ ' autosuggest-accept
+bindkey '^ ' autosuggest-accept
 #fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
@@ -156,3 +161,6 @@ ranger_cd() {
 }
 
 alias ranger=ranger_cd
+source /usr/share/nvm/init-nvm.sh
+
+eval "$(starship init zsh)"

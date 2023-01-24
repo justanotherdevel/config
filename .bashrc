@@ -9,6 +9,7 @@ complete -cf primusrun
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 alias bd=". bd -s"
+alias vim='nvim'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias DUNST_COMMAND_PAUSE='notify-send DUNST_COMMAND_PAUSE'

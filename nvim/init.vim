@@ -35,6 +35,14 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf'
 Plug 'ryanoasis/vim-devicons'
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'kdheepak/lazygit.nvim'
+Plug 'vim-scripts/restore_view.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'shatur/neovim-session-manager'
+Plug 'liuchengxu/vim-which-key'
+Plug 'ggandor/lightspeed.nvim'
+Plug 'tpope/vim-repeat'
 " Plug 'rmagatti/auto-session'
 " <============================================>
 " Specify the plugins you want to install here.
@@ -71,6 +79,13 @@ filetype plugin indent on    " required
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
+" Enable true color
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
 " When started as "evim", evim.vim will already have done these settings.
 colorscheme molokai
 set smartindent
@@ -86,6 +101,14 @@ au BufRead,BufNewFile *.ts   setfiletype typescript
 "Plugin 'leafgarland/typescript-vim'
 "vim-jsx-pretty
 let g:vim_jsx_pretty_colorful_config = 0
+
+"Folding Stuff
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=indent
+  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
+set viewoptions=cursor,folds,slash,unix
+" let g:skipview_files = ['*\.vim']
 
 " nvim stuff
 if !has('nvim')
@@ -205,10 +228,10 @@ nmap <leader>gB :ls<CR>:b<Space>
 nmap <leader>gt <c-^>
 
 "NerdTree
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
-autocmd TabNew * NERDTree
-autocmd TabNew * wincmd p
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd p
+" autocmd TabNew * NERDTree
+" autocmd TabNew * wincmd p
 " autocmd InsertLeave * :CocCommand prettier.formatFile
 map <leader>N :NERDTreeToggle<CR>
 nnoremap <C-h> <C-w><C-h>
@@ -353,6 +376,8 @@ augroup twig_ft
   autocmd BufNewFile,BufRead *.jsx   set filetype=javascriptreact
 augroup END
 
+autocmd BufNewFile,BufRead *.json set filetype=jsonc
+
 " Dart indentation settings
 autocmd FileType dart setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
@@ -390,7 +415,7 @@ endif
 "  ================================================================
 " UltiSnips
 " ================================================================
-let g:UltiSnipsExpandTrigger='<c-space>'    
+let g:UltiSnipsExpandTrigger='<c-s-space>'    
 
 "CoC
 " TextEdit might fail if hidden is not set.
@@ -419,23 +444,45 @@ else
   set signcolumn=yes
 endif
 
+" " Use tab for trigger completion with characters ahead and navigate.
+" " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" " other plugin before putting this into your config.
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+
 " Use tab for trigger completion with characters ahead and navigate.
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <expr><A-TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <c-s-space> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
@@ -569,7 +616,7 @@ let g:lightline = {
     \ 'colorscheme': 'molokai',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'cocstatus', 'readonly', 'filename', 'relativepath','modified', 'git', 'ctrlpmark', 'method' ] ],
+    \             ['filename', 'readonly', 'relativepath','modified', 'git', 'ctrlpmark', 'method', 'cocstatus'] ],
     \   'right':[ ['filetype', 'fileencoding', 'lineinfo', 'percent'],
     \             ['blame']]
     \ },
@@ -618,7 +665,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
  inoremap <silent><expr> <C-j>
        \ pumvisible() ? coc#_select_confirm() :
        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-       \ <SID>check_back_space() ? "\<TAB>" :
+       \ CheckBackspace() ? "\<TAB>" :
        \ coc#refresh()
 
 " function! s:check_back_space() abort
@@ -742,3 +789,13 @@ command! -bang -nargs=* GGrep
     \ call fzf#vim#grep(
     \   'git grep --line-number '.shellescape(<q-args>), 0,
     \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+" Lazy git stuff
+nnoremap <silent> <leader>lg :LazyGit<CR>
+
+" Which Key
+nnoremap <silent> <leader>wk :WhichKey '<Space>'<CR>
+
+" Copilot
+imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true

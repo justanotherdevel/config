@@ -43,10 +43,10 @@ bindsym $mod+shift+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -55,10 +55,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left 20px
-bindsym $mod+Shift+k move down 20px
-bindsym $mod+Shift+l move up 20px
-bindsym $mod+Shift+semicolon move right 20px
+bindsym $mod+Shift+h move left 20px
+bindsym $mod+Shift+j move down 20px
+bindsym $mod+Shift+k move up 20px
+bindsym $mod+Shift+l move right 20px
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -66,8 +66,14 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# swap focused window
+bindsym $mod+Shift+Ctrl+h mark swap; focus left; swap container with mark swap; unmark swap;
+bindsym $mod+Shift+Ctrl+j mark swap; focus down; swap container with mark swap; unmark swap;
+bindsym $mod+Shift+Ctrl+k mark swap; focus up; swap container with mark swap; unmark swap;
+bindsym $mod+Shift+Ctrl+l mark swap; focus right; swap container with mark swap; unmark swap;
+
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+semicolon split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -82,6 +88,7 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+bindsym $mod+Ctrl+space sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -92,6 +99,8 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+Shift+a focus child
 
+set $workspace7 7 
+set $workspace8 8 
 set $workSpace9 9 
 set $workSpace10 10 
 
@@ -102,8 +111,8 @@ bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workSpace9
 bindsym $mod+0 workspace $workSpace10
 bindsym $mod+ctrl+1 workspace 11
@@ -124,8 +133,8 @@ bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8 
 bindsym $mod+Shift+9 move container to workspace $workSpace9
 bindsym $mod+Shift+0 move container to workspace $workSpace10
 bindsym $mod+Shift+ctrl+1 move container to workspace 11
@@ -155,12 +164,21 @@ assign [class="whats-app-nativefier-7bbd2c"] $workSpace9
 assign [class="whats-app-nativefier-7bbd2c"] $workSpace9
 assign [class="telegram-desktop"] $workSpace9
 assign [class="TelegramDesktop"] $workSpace9
+assign [class="signal"] $workSpace9
+assign [class="Signal"] $workSpace9
+assign [class="discord"] $workSpace9
+assign [class="atlus"] $workSpace9
+assign [class="ticktick"] $workSpace8
 #assign [class="skypeforlinux"] $workSpace9
 assign [class="Rhythmbox"] $workSpace10
 assign [class="google play music desktop player"] $workSpace10
 assign [class="Google Play Music Desktop Player"] $workSpace10
+assign [class="thunderbird"] $workSpace7
 for_window [class="Spotify"] move to workspace $workSpace10
 for_window [class="Yad"] floating enable
+for_window [class="Blueberry.py"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [title="Picture-in-Picture"] sticky enable border pixel 2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -177,10 +195,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -189,10 +207,10 @@ mode "resize" {
         bindsym Right resize grow width 10 px or 10 ppt
 
         # Minute control
-        bindsym Shift+j resize shrink width 1 px or 1 ppt
-        bindsym Shift+k resize grow height 1 px or 1 ppt
-        bindsym Shift+l resize shrink height 1 px or 1 ppt
-        bindsym Shift+semicolon resize grow width 1 px or 1 ppt
+        bindsym Shift+h resize shrink width 1 px or 1 ppt
+        bindsym Shift+j resize grow height 1 px or 1 ppt
+        bindsym Shift+k resize shrink height 1 px or 1 ppt
+        bindsym Shift+l resize grow width 1 px or 1 ppt
         
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -200,15 +218,17 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-set $bg-color 	         #2f343f
+set $bg-color 	         #171a1f
 set $inactive-bg-color   #2f343f
+set $inactive-bg-color-t #2f343f11
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
+set $f-border-color      #219ebc
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.focused          $f-border-color     $f-border-color    $text-color          #00ff00
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
@@ -218,20 +238,40 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # finds out, if available)
 bar {
         #status_command i3status
+    tray_output primary
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf 
 	position top
         separator_symbol " "
 	colors {
-		background $bg-color
+		background $inactive-bg-color
 	    	separator #757575
 		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
+		focused_workspace  $inactive-bg-color $inactive-bg-color $text-color
 		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
 }
 
-bindsym $mod+shift+x exec ~/.config/i3/lock.sh
+bar {
+        #status_command i3status
+    i3bar_command i3bar --transparency
+    tray_output none
+    workspace_buttons no
+	status_command i3blocks -c ~/.config/i3/i3blocks_bottom.conf 
+    mode hide
+	position bottom
+        separator_symbol " "
+	colors {
+		background $inactive-bg-color-t
+	    	separator #757575
+		#                  border               background           text
+		focused_workspace  $inactive-bg-color-t $inactive-bg-color-t $text-color
+		inactive_workspace $inactive-bg-color-t $inactive-bg-color-t $inactive-text-color
+		urgent_workspace   $urgent-bg-color     $urgent-bg-color     $text-color
+	}
+}
+
+bindsym $mod+shift+x exec xidlehook-client --socket "/home/shashwat/.config/i3/xidlehook.socket" control --action Trigger
 bindsym $mod+shift+z exec systemctl suspend
 bindsym $mod+o exec "dunstctl set-paused false"
 bindsym $mod+shift+o exec "dunstctl set-paused true"
@@ -239,20 +279,26 @@ bindsym ctrl+mod1+space exec "dunstctl close"
 bindsym ctrl+mod1+shift+space exec "dunstctl close-all"
 bindsym ctrl+mod1+grave exec "dunstctl history-pop"
 bindsym $mod+ctrl+k exec "setxkbmap -option caps:swapescape"
-hide_edge_borders both
+#hide_edge_borders both
+
+# Run layout stuff
+exec --no-startup-id i3-msg "workspace 1; append_layout /home/shashwat/layout/workspace-1.json"
+exec --no-startup-id i3-msg "workspace 9 ; append_layout /home/shashwat/layout/workspace-9.json"
+exec --no-startup-id i3-msg "workspace 2; append_layout /home/shashwat/layout/workspace-2.json"
+exec --no-startup-id i3-msg "workspace 10 ; append_layout /home/shashwat/layout/workspace-10.json"
 
 # Things to start at run
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
+# exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id picom
 #exec --no-startup-id feh --bg-scale ~/media/wallpaper/wallpaper.jpg
 exec --no-startup-id xrdb ~/.Xresources
-exec gpmdp
-exec ~/.config/i3/wallpaper.sh
-exec whatsapp-web-desktop
-exec telegram-desktop
+exec --no-startup-id ~/.config/i3/wallpaper.sh
+# exec whatsapp-web-desktop
+exec --no-startup-id telegram-desktop
 exec --no-startup-id dunst -config /home/shashwat/.config/dunst/dunstrc
 exec --no-startup-id clipit
 exec --no-startup-id setxkbmap -layout us -option caps:swapescape 
-exec --no-startup-id cbatticon -i 'symbolic' -l 20 -r 7 -c 'systemctl suspend' -x 'i3lock -ti ~/.lock.png'
+exec --no-startup-id cbatticon -i 'symbolic' -l 20 -r 7 -c 'systemctl suspend' -x '/home/shashwat/.config/i3/lock.sh'
 exec --no-startup-id albert
 exec --no-startup-id volnoti
 exec --no-startup-id conky
@@ -264,6 +310,13 @@ exec --no-startup-id /home/shashwat/.config/i3/lightsOn/lightsOn.sh
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id indicator-kdeconnect
 exec --no-startup-id signal-desktop
+exec --no-startup-id discord
+exec --no-startup-id ticktick
+exec --no-startup-id altus
+exec --no-startup-id thunderbird
+exec --no-startup-id spotify
+exec --no-startup-id sh -c 'XAPP_FORCE_GTKWINDOW_ICON=library-podcast firefox --class WebApp-GooglePodcast3454 --profile /home/shashwat/.local/share/ice/firefox/GooglePodcast3454 --no-remote https://podcasts.google.com/'
+exec --no-startup-id sh -c 'XAPP_FORCE_GTKWINDOW_ICON=web-google-youtube firefox --class WebApp-YoutubeMusic5278 --profile /home/shashwat/.local/share/ice/firefox/YoutubeMusic5278 --no-remote https://music.youtube.com/'
 
 # key-bindings
 bindsym XF86AudioPlay exec playerctl -p spotify play-pause
@@ -285,8 +338,14 @@ bindsym $mod+End exec --no-startup-id "amixer set Master 2%- unmute && volnoti-s
 #bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && if amixer get Master | grep -Fq '[off]'; then volnoti-show -m; else volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1); fi"
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle && if amixer get Master | grep -Fq '[off]'; then volnoti-show -m; else volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1); fi"
 bindsym $mod+ctrl+Home exec --no-startup-id "pactl set-sink-mute 0 toggle && if amixer get Master | grep -Fq '[off]'; then volnoti-show -m; else volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1); fi"
-bindsym $mod+d exec rofi -show run -theme android_notification.rasi -lines 3 -eh 2 -opacity "100" -font "System San Francisco Display 11"
-bindsym $mod+ctrl+d exec rofi -show window -lines 3 -eh 2 -opacity "100" -font "System San Francisco Display 11"
+# bindsym $mod+d exec rofi -show combi -modi combi -theme android_notification.rasi -lines 3 -eh 2 -opacity "100" -font "System San Francisco Display 11"
+bindsym $mod+d exec "rofi -theme-str 'listview {lines: 5;}'  -show combi"
+bindsym $mod+c exec "rofi -theme-str 'listview {lines: 5;}'  -show calc"
+bindsym $mod+p exec "rofi-rbw"
+bindsym $mod+b exec "rofi-bluetooth"
+bindsym $mod+Shift+b exec "UDISKIE_DMENU_LAUNCHER='rofi' udiskie-dmenu -matching regex -dmenu -i -no-custom -multi-select"
+bindsym $mod+ctrl+d exec "rofi -theme-str 'listview {lines: 5;}'  -show drun -theme launchpad"
+# bindsym $mod+ctrl+d exec rofi -show window -theme android_notification.rasi -fixed-num-lines 3 -eh 2 -opacity "100" -font "System San Francisco Display 11"
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && volnoti-show $(xbacklight -get)
 bindsym $mod+XF86AudioRaiseVolume exec xbacklight -inc 5 && volnoti-show $(xbacklight -get)
 bindsym $mod+Next exec xbacklight -inc 5 && volnoti-show $(xbacklight -get)
@@ -311,3 +370,33 @@ bindsym $mod+s exec i3-input -F 'swap container with mark %s' -l 1 -P 'Swap: '
 
 # i3-input
 bindsym $mod+i exec i3-input
+
+# i3-gaps specific config
+# You can also use any non-zero value if you'd like to have a border
+for_window [class=".*"] border pixel 5
+# gaps inner all set 20
+# gaps inner 5
+# gaps outer current plus 5
+# gaps horizontal current plus 40
+# gaps outer current toggle 60
+gaps inner 10
+#gaps outer 5
+smart_gaps on
+smart_borders on
+hide_edge_borders smart_no_gaps
+
+mode "gaps" {
+        # These bindings trigger as soon as you enter the resize mode
+        bindsym i gaps inner current minus 5
+        bindsym Shift+i gaps inner current plus 5
+
+        bindsym o gaps outer current minus 5
+        bindsym Shift+o gaps outer current plus 5
+
+        
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+g mode "gaps"

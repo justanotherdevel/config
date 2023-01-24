@@ -1,15 +1,12 @@
 [global_config]
-  borderless = True
-  title_transmit_bg_color = "#000000"
 [keybindings]
   full_screen = None
   help = ""
 [profiles]
   [[default]]
-    background_darkness = 0.8
+    background_darkness = 0.64
     background_type = transparent
     cursor_shape = ibeam
-    cursor_color = "#00ff00"
     font = Monospace 11
     foreground_color = "#00ff00"
     show_titlebar = False

@@ -172,11 +172,11 @@
       <eventcontext
          id="arc"
          style="fill:red;"
-         end="359.939"
+         end="359.93900250177"
          start="0"
          usecurrent="1"
-         rx="76.777"
-         ry="74.9261"
+         rx="76.1936169721947"
+         ry="76.1936169721947"
          open="1"
          arc_type="1" />
       <eventcontext
@@ -335,7 +335,7 @@
        id="lpetool"
        mode="drag"
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
-       unit="mm"
+       unit="px"
        show_bbox="1" />
     <eventcontext
        id="text"
@@ -367,8 +367,8 @@
        live_outline="1"
        live_objects="1"
        show_helperpath="0"
-       x="195.491"
-       y="318.58"
+       x="4166.66589583335"
+       y="2500.00072916665"
        edit_clipping_paths="0"
        edit_masks="0"
        highlight_color="4278190335" />
@@ -444,6 +444,13 @@
        offset="5"
        measure-start="-251.429,1277.14"
        measure-end="620,888.571" />
+    <eventcontext
+       id="marker"
+       selcue="1"
+       gradientdrag="1" />
+    <group
+       id="geometric"
+       mode="drag" />
   </group>
   <group
      id="palette">
@@ -564,7 +571,8 @@
   </group>
   <group
      id="colorselector"
-     page="4" />
+     page="2"
+     switcher="1" />
   <group
      id="embedded">
     <group
@@ -587,7 +595,7 @@
        panel_mode="1"
        panel_wrap="0"
        panel_border="0"
-       page="2"
+       page="1"
        x="0"
        y="0"
        w="358"
@@ -690,12 +698,16 @@
        h="494"
        visible="0"
        state="2"
-       placement="5">
+       placement="5"
+       defaultopts="1">
       <group
          id="exportarea"
          value="selection" />
       <group
          id="defaultxdpi" />
+      <group
+         id="batchexportarea"
+         value="layer" />
     </group>
     <group
        id="save_as"
@@ -713,15 +725,16 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/shashwat/Documents/Graphics/" />
+       path="/home/shashwat/Programs/web/Vahan/Assets/vectorstock_29687335" />
     <group
        id="import"
        enable_preview="1"
        path="/home/shashwat/Documents/CIC/ArtAndDesign/InkScapeLibrary/"
        ask="1"
        ask_svg="1"
-       link="link"
-       scale="optimizeSpeed" />
+       link="embed"
+       scale="auto"
+       forcexdpi="0" />
     <group
        id="debug"
        redirect="0" />
@@ -816,7 +829,9 @@
        add-label-comments="0" />
   </group>
   <group
-     id="options">
+     id="options"
+     rotationlock="1"
+     onimport="0">
     <group
        id="renderingcache"
        size="64" />
@@ -989,7 +1004,8 @@
     <group
        id="maskobject"
        topmost="1"
-       remove="1" />
+       remove="1"
+       grouping="0" />
     <group
        id="blurquality"
        value="0" />
@@ -1102,17 +1118,25 @@
        value="1" />
     <group
        id="boot"
-       theme="colorful">
+       theme="symbolic">
       <group
          id="shown"
-         ver1.1.1="1" />
+         ver1.1.1="1"
+         ver1.2.1="1"
+         ver1.2.2="1" />
     </group>
+    <group
+       id="font"
+       unitType="2" />
   </group>
   <group
-     id="extensions" />
+     id="extensions"
+     org.inkscape.output.png.inkscape.png_bitdepth="99"
+     org.inkscape.output.png.inkscape.png_compression="6"
+     org.inkscape.output.png.inkscape.png_antialias="2" />
   <group
      id="desktop"
-     style="line-height:1.25;font-size:133.33333333px;text-align:justify;fill:#ffffff;stroke:#0007ff;stroke-width:12.71811024">
+     style="line-height:1.25;font-size:133.33333333px;text-align:justify;fill:#0a0a0a;stroke-width:1.37952756;stroke:#83c969">
     <group
        width="1920"
        height="1038"
@@ -1140,11 +1164,20 @@
      id="toolbox"
      icononly="1"
      secondary="1"
+     simplesnap="1"
      small="1">
     <group
        id="tools"
        icononly="1"
-       small="0" />
+       small="0"
+       iconsize="16"
+       width="32">
+      <group
+         id="buttons" />
+    </group>
+    <group
+       id="controlbars"
+       iconsize="16" />
   </group>
   <group
      id="iconpreview"
@@ -1219,25 +1252,40 @@
      language="" />
   <group
      id="theme"
-     defaultTheme="Arc-Dark"
+     defaultPreferDarkTheme="0"
      defaultIconTheme="Moka"
+     defaultGtkTheme="Arc-Dark"
+     narrowSpinButton="1"
+     preferDarkTheme="1"
+     darkTheme="1"
+     symbolicIcons="1"
+     symbolicDefaultBaseColors="1"
+     symbolicDefaultHighColors="1"
+     defaultTheme="Arc-Dark"
      gtkTheme="Adwaita"
      menuIcons_canvas="0"
      menuIcons_layers="0"
      menuIcons_objects="0"
-     defaultPreferDarkTheme="0"
-     defaultGtkTheme="Arc-Dark"
-     preferDarkTheme="1"
-     darkTheme="1"
-     iconTheme="multicolor"
-     symbolicIcons="1"
-     symbolicDefaultBaseColors="0"
-     symbolicDefaultHighColors="0">
+     iconTheme="Adwaita">
     <group
        id="multicolor"
-       symbolicBaseColor="3958107135"
-       symbolicSuccessColor="10029823"
-       symbolicWarningColor="4279865599"
-       symbolicErrorColor="10086143" />
+       symbolicBaseColor="3857049087"
+       symbolicSuccessColor="3435973887"
+       symbolicWarningColor="2155905279"
+       symbolicErrorColor="2155905279" />
   </group>
+  <group
+     id="statusbar">
+    <group
+       id="visibility" />
+  </group>
+  <group
+     id="live_effects"
+     flattening="0" />
+  <group
+     id="gradient-edit"
+     stoplist="1" />
+  <group
+     id="color_scales"
+     wheel_vis_hsluv="0" />
 </inkscape>

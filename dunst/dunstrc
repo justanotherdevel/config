@@ -11,7 +11,8 @@
     # <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
     # If markup is not allowed, those tags will be stripped out of the
     # message.
-    allow_markup = yes
+    # allow_markup = yes
+    markup = full
     
     # The format of the message.  Possible variables are:
     #   %a  appname
@@ -37,7 +38,7 @@
     # window allows bounces back and forth.
     # This option conflicts with "word_wrap".
     # Set to 0 to disable.
-    bounce_freq = 0
+    # bounce_freq = 0
     
     # Show age of message if message is older than show_age_threshold
     # seconds.
@@ -64,7 +65,12 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x5-30+20"
+    # geometry = "300x5-30+20"
+    width = 300
+    # height = 50
+    offset = 30x30 
+    origin = top-right
+    corner_radius = 10
     
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -73,7 +79,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing windowmanager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 5
+    transparency = 30
     
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -101,7 +107,7 @@
     sticky_history = yes
     
     # Maximum amount of notifications kept in history
-    history_length = 200
+    history_length = 20000
     
     # Display indicators for URLs (U) and actions (A).
     show_indicators = yes
@@ -133,13 +139,17 @@
     # Print a notification on startup.
     # This is mainly for error detection, since dbus (re-)starts dunst
     # automatically after a crash.
-    startup_notification = false
+    # startup_notification = false
     
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/bin/rofi -dmenu -p dunst
     
     # Browser for opening urls in context menu.
-    browser = /usr/bin/google-chrome-stable -new-tab
+    browser = /usr/bin/firefox -new-tab
+    
+    # Mouse commands
+    mouse_left_click = context
+    mouse_right_click = close_current
 
     # Align icons left/right/off
     icon_position = left
@@ -147,14 +157,14 @@
     max_icon_size = 64
     # Paths to default icons.
     #icon_folders = /usr/share/icons/Moka/16x16/status/:/usr/share/icons/Moka/16x16/devices/
-    icon_folders = /usr/share/icons/Moka/48x48/status/:/usr/share/icons/Moka/48x48/devices/:/usr/share/icons/Moka/48x48/actions/:/usr/share/icons/Moka/48x48/apps/:/usr/share/icons/48x48/web:/usr/share/icons/Moka/48x48/unity/:/usr/share/icons/Moka/48x48/categories/:/usr/share/icons/Moka/48x48/emblems/:/usr/share/icons/Moka/48x48/emotes/:/usr/share/icons/Moka/48x48/mimetypes/:/usr/share/icons/Moka/48x48/places/
+    icon_path = /usr/share/icons/Moka/48x48/status/:/usr/share/icons/Moka/48x48/devices/:/usr/share/icons/Moka/48x48/actions/:/usr/share/icons/Moka/48x48/apps/:/usr/share/icons/48x48/web:/usr/share/icons/Moka/48x48/unity/:/usr/share/icons/Moka/48x48/categories/:/usr/share/icons/Moka/48x48/emblems/:/usr/share/icons/Moka/48x48/emotes/:/usr/share/icons/Moka/48x48/mimetypes/:/usr/share/icons/Moka/48x48/places/
 
-[frame]
-    width = 3
-    #color = "#aaaaaa"
-    color = "#2f343f"
+#[frame]
+#    width = 3
+#    #color = "#aaaaaa"
+#    color = "#2f343f"
 
-[shortcuts]
+# [shortcuts]
 
     # Shortcuts are specified as [modifier+][modifier+]...key
     # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
@@ -162,36 +172,36 @@
     # Xev might be helpful to find names for keys.
     
     # Close notification.
-    close = ctrl+space
+    # close = ctrl+space
     
     # Close all notifications.
-    close_all = ctrl+shift+space
+    # close_all = ctrl+shift+space
     
     # Redisplay last message(s).
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1".
-    history = ctrl+grave
+    # history = ctrl+grave
     
     # Context menu.
-    context = ctrl+shift+period
+    context = ctrl+mod1+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
     #background = "#222222"
-    background = "#222222"
+    background = "#22222288"
     foreground = "#AAAAAA"
     timeout = 10
 
 [urgency_normal]
     #background = "#285577"
-    background = "#2f343f"
+    background = "#2f343f88"
     foreground = "#ffffff"
     timeout = 10
 
 [urgency_critical]
     #background = "#900000"
-    background = "#E53935"
+    background = "#E5393588"
     foreground = "#ffffff"
     timeout = 0
 
