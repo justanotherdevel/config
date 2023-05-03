@@ -49,6 +49,7 @@ export CATALINA_HOME=/opt/apache-tomcat-8.5.23
 export ANDROID_HOME=/opt/android-sdk
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export CHROME_EXECUTABLE=google-chrome-stable
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 if [[ $TERM == xterm ]]; then
     TERM=xterm-256color
 fi
@@ -162,5 +163,10 @@ ranger_cd() {
 
 alias ranger=ranger_cd
 source /usr/share/nvm/init-nvm.sh
+alias python3=python
 
 eval "$(starship init zsh)"
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

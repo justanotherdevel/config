@@ -798,4 +798,9 @@ nnoremap <silent> <leader>wk :WhichKey '<Space>'<CR>
 
 " Copilot
 imap <silent><script><expr> <C-Space> copilot#Accept("\<CR>")
+imap <c-space><C-\> <Plug>(copilot-suggest)
+imap <c-space><C-]> <Plug>(copilot-next)
+imap <c-space><C-[> <Plug>(copilot-previous)
+imap <c-space><C-c> <Plug>(copilot-cancel)
+nmap <c-space>cp :Copilot panel<CR>
 let g:copilot_no_tab_map = v:true
