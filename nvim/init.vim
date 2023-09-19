@@ -43,6 +43,7 @@ Plug 'shatur/neovim-session-manager'
 Plug 'liuchengxu/vim-which-key'
 Plug 'ggandor/lightspeed.nvim'
 Plug 'tpope/vim-repeat'
+" Plug 'https://github.com/adelarsq/image_preview.nvim'
 " Plug 'rmagatti/auto-session'
 " <============================================>
 " Specify the plugins you want to install here.
@@ -804,3 +805,6 @@ imap <c-space><C-[> <Plug>(copilot-previous)
 imap <c-space><C-c> <Plug>(copilot-cancel)
 nmap <c-space>cp :Copilot panel<CR>
 let g:copilot_no_tab_map = v:true
+
+let g:python3_host_prog = "/home/shashwat/nvim/bin/python3.11"
+

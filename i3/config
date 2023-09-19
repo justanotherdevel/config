@@ -31,6 +31,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec terminator
+bindsym $mod+KP_Enter exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -176,6 +177,7 @@ assign [class="Google Play Music Desktop Player"] $workSpace10
 assign [class="thunderbird"] $workSpace7
 for_window [class="Spotify"] move to workspace $workSpace10
 for_window [class="Yad"] floating enable
+for_window [class="openrgb"] floating enable
 for_window [class="Blueberry.py"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [title="Picture-in-Picture"] sticky enable border pixel 2
@@ -238,7 +240,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # finds out, if available)
 bar {
         #status_command i3status
-    tray_output primary
+    tray_output DisplayPort-0
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf 
 	position top
         separator_symbol " "
@@ -272,7 +274,7 @@ bar {
 }
 
 bindsym $mod+shift+x exec xidlehook-client --socket "/home/shashwat/.config/i3/xidlehook.socket" control --action Trigger
-bindsym $mod+shift+z exec systemctl suspend
+# bindsym $mod+shift+z exec systemctl suspend
 bindsym $mod+o exec "dunstctl set-paused false"
 bindsym $mod+shift+o exec "dunstctl set-paused true"
 bindsym ctrl+mod1+space exec "dunstctl close"
@@ -288,47 +290,54 @@ exec --no-startup-id i3-msg "workspace 2; append_layout /home/shashwat/layout/wo
 exec --no-startup-id i3-msg "workspace 10 ; append_layout /home/shashwat/layout/workspace-10.json"
 
 # Things to start at run
-# exec --no-startup-id picom --config ~/.config/picom/picom.conf
-exec --no-startup-id picom
-#exec --no-startup-id feh --bg-scale ~/media/wallpaper/wallpaper.jpg
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id barrier --config ~/.config/barrier/barrier.conf
+exec --no-startup-id xidlehook --not-when-fullscreen --socket "/home/shashwat/.config/i3/xidlehook.socket" ---timer 300 "/home/shashwat/.config/i3/lock.sh" "" &
+# exec --no-startup-id picom
+exec --no-startup-id feh --bg-scale ~/media/wallpaper/wallpaper.jpg
 exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id ~/.config/i3/wallpaper.sh
-# exec whatsapp-web-desktop
+## exec whatsapp-web-desktop
 exec --no-startup-id telegram-desktop
 exec --no-startup-id dunst -config /home/shashwat/.config/dunst/dunstrc
 exec --no-startup-id clipit
-exec --no-startup-id setxkbmap -layout us -option caps:swapescape 
-exec --no-startup-id cbatticon -i 'symbolic' -l 20 -r 7 -c 'systemctl suspend' -x '/home/shashwat/.config/i3/lock.sh'
-exec --no-startup-id albert
+# exec --no-startup-id setxkbmap -layout us -option caps:swapescape 
+#exec --no-startup-id cbatticon -i 'symbolic' -l 20 -r 7 -c 'systemctl suspend' -x '/home/shashwat/.config/i3/lock.sh'
+#exec --no-startup-id albert
 exec --no-startup-id volnoti
 exec --no-startup-id conky
 exec --no-startup-id numlockx on
-exec --no-startup-id libinput-gestures-setup start
-exec --no-startup-id blueberry-tray
+#exec --no-startup-id libinput-gestures-setup start
+#exec --no-startup-id blueberry-tray
 exec --no-startup-id thunar --daemon
-exec --no-startup-id /home/shashwat/.config/i3/lightsOn/lightsOn.sh
+#exec --no-startup-id /home/shashwat/.config/i3/lightsOn/lightsOn.sh
 exec --no-startup-id /usr/lib/kdeconnectd
-exec --no-startup-id indicator-kdeconnect
+exec --no-startup-id kdeconnect-indicator
 exec --no-startup-id signal-desktop
 exec --no-startup-id discord
 exec --no-startup-id ticktick
 exec --no-startup-id altus
 exec --no-startup-id thunderbird
 exec --no-startup-id spotify
-exec --no-startup-id sh -c 'XAPP_FORCE_GTKWINDOW_ICON=library-podcast firefox --class WebApp-GooglePodcast3454 --profile /home/shashwat/.local/share/ice/firefox/GooglePodcast3454 --no-remote https://podcasts.google.com/'
-exec --no-startup-id sh -c 'XAPP_FORCE_GTKWINDOW_ICON=web-google-youtube firefox --class WebApp-YoutubeMusic5278 --profile /home/shashwat/.local/share/ice/firefox/YoutubeMusic5278 --no-remote https://music.youtube.com/'
-
+exec --no-startup-id sh -c 'XAPP_FORCE_GTKWINDOW_ICON=library-podcast firefox --class WebApp-GooglePodcast4993 --profile /home/shashwat/.local/share/ice/firefox/GooglePodcast4993 --no-remote https://podcasts.google.com/'
+exec --no-startup-id sh -c 'XAPP_FORCE_GTKWINDOW_ICON=web-google-youtube firefox --class WebApp-YoutubeMusic7188 --profile /home/shashwat/.local/share/ice/firefox/YoutubeMusic7188 --no-remote https://music.youtube.com/'
+exec --no-startup-id nm-applet
+#
 # key-bindings
 bindsym XF86AudioPlay exec playerctl -p spotify play-pause
 bindsym XF86AudioPause exec playerctl -p spotify play-pause
 bindsym XF86AudioNext exec playerctl -p spotify next
+bindsym Shift+XF86AudioNext exec playerctl -p spotify position 5+
+bindsym $mod+XF86AudioNext exec playerctl -p plasma-browser-integration position 5+
+bindsym Shift+XF86AudioPrev exec playerctl -p spotify position 5-
 bindsym XF86AudioPrev exec playerctl -p spotify previous
+bindsym $mod+XF86AudioPrev exec playerctl -p plasma-browser-integration position 5-
 bindsym XF86AudioStop exec playerctl -p spotify stop
-bindsym $mod+XF86AudioPlay exec playerctl play-pause
-bindsym $mod+XF86AudioPause exec playerctl play-pause
-bindsym $mod+XF86AudioNext exec playerctl next
-bindsym $mod+XF86AudioPrev exec playerctl previous
-bindsym $mod+XF86AudioStop exec playerctl stop
+bindsym $mod+XF86AudioPlay exec playerctl -p plasma-browser-integration play-pause
+bindsym $mod+XF86AudioPause exec playerctl -p plasma-browser-integration play-pause
+bindsym $mod+Shift+XF86AudioNext exec playerctl -p plasma-browser-integration next
+bindsym $mod+Shift+XF86AudioPrev exec playerctl -p plasma-browser-integration previous
+bindsym $mod+XF86AudioStop exec playerctl -p plasma-browser-integration stop
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 2%+ unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
 bindsym $mod+Home exec --no-startup-id "amixer set Master 2%+ unmute && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
 #bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5% && pactl set-sink-mute 0 0 && volnoti-show $(pamixer --get-volume | xargs ~/.config/i3/get_volume | head -1)"
@@ -341,6 +350,7 @@ bindsym $mod+ctrl+Home exec --no-startup-id "pactl set-sink-mute 0 toggle && if 
 # bindsym $mod+d exec rofi -show combi -modi combi -theme android_notification.rasi -lines 3 -eh 2 -opacity "100" -font "System San Francisco Display 11"
 bindsym $mod+d exec "rofi -theme-str 'listview {lines: 5;}'  -show combi"
 bindsym $mod+c exec "rofi -theme-str 'listview {lines: 5;}'  -show calc"
+bindsym $mod+Shift+n exec "rofi -theme-str 'listview {lines: 5;}'  -show emoji"
 bindsym $mod+p exec "rofi-rbw"
 bindsym $mod+b exec "rofi-bluetooth"
 bindsym $mod+Shift+b exec "UDISKIE_DMENU_LAUNCHER='rofi' udiskie-dmenu -matching regex -dmenu -i -no-custom -multi-select"
@@ -381,7 +391,7 @@ for_window [class=".*"] border pixel 5
 # gaps outer current toggle 60
 gaps inner 10
 #gaps outer 5
-smart_gaps on
+smart_gaps off
 smart_borders on
 hide_edge_borders smart_no_gaps
 

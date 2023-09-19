@@ -147,4 +147,5 @@ configuration {
 }
 
 //@theme "android_notification.rasi"
-@theme "/home/shashwat/.local/share/rofi/themes/rounded-pink-dark.rasi"
+//@theme "/home/shashwat/.local/share/rofi/themes/rounded-pink-dark.rasi"
+@theme "/usr/share/rofi/themes/rounded-pink-dark.rasi"

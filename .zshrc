@@ -1,5 +1,5 @@
 # The following lines were added by compinstall
-prompt off
+#prompt off
 # cd $HOME
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :compinstall filename '/home/shashwat/.zshrc'
@@ -7,8 +7,8 @@ zstyle :compinstall filename '/home/shashwat/.zshrc'
 autoload -Uz compinit
 compinit
 
-# autoload -Uz promptinit
-# promptinit
+#autoload -Uz promptinit
+#promptinit
 
 
 
@@ -46,7 +46,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export JAVA_HOME=/usr/lib/jvm/default
 export CATALINA_HOME=/opt/apache-tomcat-8.5.23
-export ANDROID_HOME=/opt/android-sdk
+export ANDROID_HOME=/home/shashwat/Android/Sdk/
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export CHROME_EXECUTABLE=google-chrome-stable
 export PATH="$PATH":"$HOME/.pub-cache/bin"
@@ -94,6 +94,13 @@ bindkey -M vicmd v edit-command-line
 eval "$(rbenv init -)"
 path+=("/home/shashwat/.gem/ruby/2.6.0/bin")
 
+#android studio
+path+=("/home/shashwat/Android/Sdk/cmdline-tools/latest/bin/")
+path+=("/home/shashwat/Android/Sdk/emulator/")
+path+=("/home/shashwat/Android/Sdk/platform-tools/")
+export ANDROID_SDK_ROOT="/home/shashwat/Android/Sdk/"
+
+
 # Lammps
 path+=("/home/shashwat/Documents/CIC/electronics/GasBarrierNanofoam/lammps/lammps-7Aug19/build")
 
@@ -101,6 +108,9 @@ path+=("/home/shashwat/Documents/CIC/electronics/GasBarrierNanofoam/lammps/lammp
 path+=("/home/shashwat/AppImage/")
 
 path+=("/home/shashwat/.local/bin")
+
+# Snaps
+path+=('/var/lib/snapd/snap/bin')
 
 # Cursor Mode
 
@@ -148,8 +158,8 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 # Temporary fix for android emulator (hopefully)
-function emulator { ( cd "$(dirname "$(whence -p emulator)")" && ./emulator "$@"; ) }
-cd "$AUTOCD"
+# function emulator { ( cd "$(dirname "$(whence -p emulator)")" && ./emulator "$@"; ) }
+# cd "$AUTOCD"
 
 
 ranger_cd() {
@@ -170,3 +180,6 @@ eval "$(starship init zsh)"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+export QT_STYLE_OVERRIDE=kvantum
+
+# cd $HOME
