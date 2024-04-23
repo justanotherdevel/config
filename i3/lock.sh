@@ -4,7 +4,7 @@
 dunstctl set-paused true
 
 # lock the screen
-i3lock -n -ti ~/.lock.png
+i3lock -n -tfi ~/.lock.png
 
 # resume message display
 #pkill -u "$USER" -USR2 dunst

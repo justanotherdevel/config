@@ -43,6 +43,10 @@ Plug 'shatur/neovim-session-manager'
 Plug 'liuchengxu/vim-which-key'
 Plug 'ggandor/lightspeed.nvim'
 Plug 'tpope/vim-repeat'
+Plug 'themaxmarchuk/tailwindcss-colors.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall'
+Plug 'karb94/neoscroll.nvim'
 " Plug 'https://github.com/adelarsq/image_preview.nvim'
 " Plug 'rmagatti/auto-session'
 " <============================================>
@@ -806,5 +810,6 @@ imap <c-space><C-c> <Plug>(copilot-cancel)
 nmap <c-space>cp :Copilot panel<CR>
 let g:copilot_no_tab_map = v:true
 
-let g:python3_host_prog = "/home/shashwat/nvim/bin/python3.11"
+" let g:python3_host_prog = "/home/shashwat/nvim/bin/python3.11"
+let g:python3_host_prog = "/home/shashwat/python/computerVision/bin/python"
 

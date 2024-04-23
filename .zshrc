@@ -19,7 +19,7 @@ ttyctl -f
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt autocd
+# setopt autocd
 unsetopt beep
 bindkey -v
 zstyle ':completion:*' menu select
@@ -58,7 +58,7 @@ if [[ $TERM == screen ]]; then
 fi
 export GPG_TTY=$(tty)
 if [[ -x "`whence -p dircolors`" ]]; then
-  eval `dircolors`
+  eval `dircolors -b /home/shashwat/.dircolors`
   alias ls='ls -F --color=auto'
 else
   alias ls='ls -F'
