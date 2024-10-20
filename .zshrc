@@ -66,12 +66,23 @@ fi
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+if [[ -z $TMUX ]] && [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
   dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
   [[ -d $dirstack[1] ]] && cd $dirstack[1]
 fi
+
 chpwd() {
   print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+}
+
+# Function to manually restore the last directory
+restore_last_dir() {
+  if [[ -f $DIRSTACKFILE ]]; then
+    dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+    [[ -d $dirstack[1] ]] && cd $dirstack[1]
+  else
+    echo "No saved directory stack found."
+  fi
 }
 
 DIRSTACKSIZE=20
@@ -179,7 +190,7 @@ eval "$(starship init zsh)"
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 export QT_STYLE_OVERRIDE=kvantum
 
 # cd $HOME

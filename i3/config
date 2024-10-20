@@ -306,7 +306,7 @@ exec --no-startup-id i3-msg "workspace 2; append_layout /home/shashwat/layout/wo
 exec --no-startup-id i3-msg "workspace 10 ; append_layout /home/shashwat/layout/workspace-10.json"
 
 # Things to start at run
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id barrier --config ~/.config/barrier/barrier.conf
 exec --no-startup-id xidlehook --not-when-fullscreen --socket "/home/shashwat/.config/i3/xidlehook.socket" ---timer 300 "/home/shashwat/.config/i3/lock.sh" "" &
 # exec --no-startup-id picom
@@ -335,7 +335,7 @@ exec --no-startup-id ticktick
 exec --no-startup-id altus
 exec --no-startup-id thunderbird
 exec --no-startup-id spotify
-exec --no-startup-id sh -c 'XAPP_FORCE_GTKWINDOW_ICON=library-podcast firefox --class WebApp-GooglePodcast4993 --profile /home/shashwat/.local/share/ice/firefox/GooglePodcast4993 --no-remote https://podcasts.google.com/'
+#exec --no-startup-id sh -c 'XAPP_FORCE_GTKWINDOW_ICON=library-podcast firefox --class WebApp-GooglePodcast4993 --profile /home/shashwat/.local/share/ice/firefox/GooglePodcast4993 --no-remote https://podcasts.google.com/'
 exec --no-startup-id sh -c 'XAPP_FORCE_GTKWINDOW_ICON=web-google-youtube firefox --class WebApp-YoutubeMusic7188 --profile /home/shashwat/.local/share/ice/firefox/YoutubeMusic7188 --no-remote https://music.youtube.com/'
 exec --no-startup-id nm-applet
 #
