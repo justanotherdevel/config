@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/BurntSushi/toml v0.4.1
 	golang.org/x/exp/typeparams v0.0.0-20220218215828-6cf2b201936e
-	golang.org/x/sys v0.0.0-20211019181941-9d821ace8654
+	golang.org/x/sys v0.1.0
 	golang.org/x/tools v0.1.11-0.20220513221640-090b14e8501f
 )
 
