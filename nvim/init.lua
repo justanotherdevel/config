@@ -1,31 +1,36 @@
-local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
-vim.cmd.source(vimrc)
+-- Set leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
+-- Load core settings
+require("config.lazy")
+require("config.settings")
+require("config.mappings")
+require("config.autocmds")
+require("config.ui")
+require("config.cmp")
+require("lsp")
 
-local nvim_lsp = require("lspconfig")
+-- Customize fzf layout
+vim.g.fzf_layout = { window = { width = 0.9, height = 0.6, border = 'rounded' } }
 
-local on_attach = function(client, bufnr)
-  -- other stuff --
-  require("tailwindcss-colors").buf_attach(bufnr)
-end
+-- Set up fzf preview window
+vim.g.fzf_preview_window = { 'right:50%', 'ctrl-/' }
 
-nvim_lsp["tailwindcss"].setup({
-  -- other settings --
-  on_attach = on_attach,
-})
-
-require('neoscroll').setup()
-
-require('neoscroll').setup({
-    -- All these keys will be mapped to their corresponding default scrolling animation
-    mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
-                '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
-    hide_cursor = true,          -- Hide cursor while scrolling
-    stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-    respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-    cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-    easing_function = nil,       -- Default easing function
-    pre_hook = nil,              -- Function to run before the scrolling animation starts
-    post_hook = nil,             -- Function to run after the scrolling animation ends
-    performance_mode = false,    -- Disable "Performance Mode" on all buffers.
-})
+-- Customize fzf colors to match your colorscheme
+vim.cmd [[
+  let g:fzf_colors =
+  \ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+]]
