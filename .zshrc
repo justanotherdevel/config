@@ -1,6 +1,8 @@
 # The following lines were added by compinstall
 #prompt off
 # cd $HOME
+# FZF
+source <(fzf --zsh)
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :compinstall filename '/home/shashwat/.zshrc'
 
@@ -12,7 +14,7 @@ compinit
 
 
 
-source /usr/share/doc/pkgfile/command-not-found.zsh
+# source /usr/share/doc/pkgfile/command-not-found.zsh
 ttyctl -f
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
@@ -64,7 +66,7 @@ else
   alias ls='ls -F'
 fi
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 if [[ -z $TMUX ]] && [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
   dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
@@ -162,11 +164,12 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 # Plugins
 
 # autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 #fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source <(fzf --zsh)
+#source /usr/share/fzf/key-bindings.zsh
+#source /usr/share/fzf/completion.zsh
 
 # Temporary fix for android emulator (hopefully)
 # function emulator { ( cd "$(dirname "$(whence -p emulator)")" && ./emulator "$@"; ) }
@@ -183,8 +186,9 @@ ranger_cd() {
 }
 
 alias ranger=ranger_cd
-source /usr/share/nvm/init-nvm.sh
-alias python3=python
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 eval "$(starship init zsh)"
 
@@ -192,5 +196,20 @@ eval "$(starship init zsh)"
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
 export QT_STYLE_OVERRIDE=kvantum
+alias py=python3
 
 # cd $HOME
+export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export ANDROID_HOME=/Users/shashwatyashaswi/Library/Android/sdk
+export PATH="/opt/homebrew/share/android-commandlinetools/cmdline-tools/latest/
+/bin:$PATH"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+export PATH="$ANDROID_HOME/emulator:$PATH"
+
+# Completions
+set show-all-if-ambiguous on
+set completion-ignore-case on
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
